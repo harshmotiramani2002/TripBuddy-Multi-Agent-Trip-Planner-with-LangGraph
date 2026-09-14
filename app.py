@@ -104,7 +104,10 @@ async def health_check():
 async def favicon():
     return JSONResponse(content={})
 
-
+@app.get("/health")
+@app.head("/health")
+async def health():
+    return {"status": "ok"}
 
 if __name__ == "__main__":
     uvicorn.run(
